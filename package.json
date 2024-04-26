@@ -1,0 +1,19 @@
+{
+  "name": "rivacoldpdftoexcel",
+  "version": "1.0.0",
+  "description": "build to eter energy to transform pdf to excel",
+  "authors": "YK Web Studio - Yang Ye",
+  "main": "index.js",
+  "bin": "index.js",
+  "scripts": {
+    "dev": "node index",
+    "pack": "pkg ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "exceljs": "^4.4.0",
+    "pdf-parse": "^1.1.1"
+  }
+}
