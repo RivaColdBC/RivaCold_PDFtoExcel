@@ -10,10 +10,14 @@ const FolderPath = AbsPath + "\\archivos\\";
 main();
 
 async function main() {
-  const pdfData = await extractTextFromPDF(FolderPath + "zanotti.pdf");
+  const pdfData = await extractTextFromPDF(FolderPath + "intarcon.pdf");
   const lines = pdfData.text.split("\n");
-  console.log(lines);
-  exec(`start "" "${ExcelOutputPath}"`);
+  for (const line of lines) {
+    await writeDataToExcel(line);
+  }
+
+  await workbookResumen.xlsx.writeFile(FolderPath + "intarcon.xlsx");
+  exec(`start "" "${FolderPath + "intarcon.xlsx"}"`);
 }
 
 async function extractTextFromPDF(pdfPath) {
@@ -39,4 +43,12 @@ function render_page(pageData) {
     }
     return text;
   });
+}
+
+const workbookResumen = new ExcelJS.Workbook();
+const worksheetResumen = workbookResumen.addWorksheet("Resumen");
+
+async function writeDataToExcel(data) {
+
+  worksheetResumen.addRow(data.split("xYYx"));
 }
