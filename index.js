@@ -6,18 +6,18 @@ const exec = require("child_process").exec;
 
 const AbsPath = path.resolve();
 const FolderPath = AbsPath + "\\archivos\\";
-
+const file = "tarifa1"
 main();
 
 async function main() {
-  const pdfData = await extractTextFromPDF(FolderPath + "intarcon.pdf");
+  const pdfData = await extractTextFromPDF(FolderPath + file + ".pdf");
   const lines = pdfData.text.split("\n");
   for (const line of lines) {
     await writeDataToExcel(line);
   }
 
-  await workbookResumen.xlsx.writeFile(FolderPath + "intarcon.xlsx");
-  exec(`start "" "${FolderPath + "intarcon.xlsx"}"`);
+  await workbookResumen.xlsx.writeFile(FolderPath + file + ".xlsx");
+  exec(`start "" "${FolderPath + file + ".xlsx"}"`);
 }
 
 async function extractTextFromPDF(pdfPath) {

@@ -6,7 +6,7 @@
   "main": "index.js",
   "bin": "index.js",
   "scripts": {
-    "dev": "node index",
+    "start": "node index",
     "pack": "pkg ."
   },
   "keywords": [],
